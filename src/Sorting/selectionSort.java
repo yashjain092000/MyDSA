@@ -4,6 +4,9 @@ import java.util.Arrays;
 
 //O(n2)
 //Unstable
+//1. Scan the array and search for min.
+//2. Swap it with first index.
+//3. Continue this n-1 times.
 public class selectionSort {
     public void sort(int[] a){
         for(int i=0;i<a.length-1;i++){
