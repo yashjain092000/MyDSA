@@ -47,6 +47,21 @@ public class BinarySearchTree {
         }
     }
 
+    Node rInsert(Node troot, int e){
+        if(troot!=null){
+            if(e< troot.val)
+                troot.left=rInsert(troot.left,e);
+            else if(e>troot.val)
+                troot.right=rInsert(troot.right,e);
+        }
+        else{
+            Node n=new Node(e,null,null);
+            troot=n;
+
+        }
+        return troot;
+    }
+
     public static void main(String[] args) {
         BinarySearchTree t=new BinarySearchTree();
         t.insert(t.root, 50);
@@ -56,6 +71,15 @@ public class BinarySearchTree {
         t.insert(t.root, 40);
         t.insert(t.root, 60);
         t.inorder(t.root);
+        System.out.println("recursive insert");
+        BinarySearchTree b=new BinarySearchTree();
+        b.root=b.rInsert(b.root, 20);
+        b.rInsert(b.root, 40);
+        b.rInsert(b.root, 60);
+        b.rInsert(b.root, 80);
+        b.rInsert(b.root, 100);
+        b.inorder(b.root);
+
 
     }
 
