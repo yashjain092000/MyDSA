@@ -1,5 +1,8 @@
 package Trees.BinarySearchTrees;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class BinarySearchTree {
 
     public class Node{
@@ -12,10 +15,12 @@ public class BinarySearchTree {
             right=r;
         }
     }
+
     Node root;
     BinarySearchTree(){
         root=null;
     }
+
     public void insert(Node troot,int e){
         Node temp=null;// for storing parent of node to be inserted
         while(troot!=null){
@@ -38,14 +43,6 @@ public class BinarySearchTree {
             root=n;
 
     }
-    void inorder(Node troot){
-        if(troot!=null){
-            inorder(troot.left);
-            System.out.print(troot.val+" ");
-            inorder(troot.right);
-
-        }
-    }
 
     Node rInsert(Node troot, int e){
         if(troot!=null){
@@ -61,7 +58,50 @@ public class BinarySearchTree {
         }
         return troot;
     }
+//Traversals
+    void inorder(Node troot){
+        if(troot!=null){
+            inorder(troot.left);
+            System.out.print(troot.val+" ");
+            inorder(troot.right);
+        }
+    }
 
+    void preorder(Node troot){
+        if(troot!=null){
+            System.out.print(troot.val+" ");
+            preorder(troot.left);
+            preorder(troot.right);
+        }
+    }
+
+    void postorder(Node troot){
+        if(troot!=null){
+            postorder(troot.left);
+            postorder(troot.right);
+            System.out.print(troot.val+" ");
+        }
+
+    }
+    void level(){
+        Queue<Node> q = new LinkedList<>();
+        Node t=root;
+        System.out.print(t.val+" ");
+        q.offer(t);
+        while(!q.isEmpty()){
+            t=q.poll();
+            if(t.left!=null){
+                System.out.print(t.left.val+" ");
+                q.offer(t.left);
+            }
+            if(t.right!=null){
+                System.out.print(t.right.val+" ");
+                q.offer(t.right);
+            }
+        }
+
+
+    }
     public static void main(String[] args) {
         BinarySearchTree t=new BinarySearchTree();
         t.insert(t.root, 50);
@@ -79,6 +119,12 @@ public class BinarySearchTree {
         b.rInsert(b.root, 80);
         b.rInsert(b.root, 100);
         b.inorder(b.root);
+        System.out.println("");
+        b.level();
+        System.out.println("");
+        b.preorder(t.root);
+        System.out.println("");
+        t.postorder(t.root);
 
 
     }
