@@ -118,6 +118,18 @@ public class BinarySearchTree {
             return false;
         }
 
+        //Recursive Searching
+        boolean rSearch(Node troot,int key){
+            if(troot==null)
+                return false;
+            else if(troot.val==key)
+                return true;
+            else if(key<troot.val)
+                return rSearch(troot.left,key);
+            else
+                return rSearch(troot.right,key);
+        }
+
 
     public static void main(String[] args) {
         BinarySearchTree t=new BinarySearchTree();
@@ -143,6 +155,7 @@ public class BinarySearchTree {
         System.out.println("");
         t.postorder(t.root);
         System.out.println(t.search(0));
+        System.out.println(t.rSearch(t.root,10));
 
 
     }
