@@ -20,7 +20,9 @@ public class BinarySearchTree {
     BinarySearchTree(){
         root=null;
     }
+//Insertions
 
+    //Iterative Insertion
     public void insert(Node troot,int e){
         Node temp=null;// for storing parent of node to be inserted
         while(troot!=null){
@@ -44,6 +46,7 @@ public class BinarySearchTree {
 
     }
 
+    //Recursive Insertion
     Node rInsert(Node troot, int e){
         if(troot!=null){
             if(e< troot.val)
@@ -83,25 +86,39 @@ public class BinarySearchTree {
         }
 
     }
-    void level(){
+    void level() {
         Queue<Node> q = new LinkedList<>();
-        Node t=root;
-        System.out.print(t.val+" ");
+        Node t = root;
+        System.out.print(t.val + " ");
         q.offer(t);
-        while(!q.isEmpty()){
-            t=q.poll();
-            if(t.left!=null){
-                System.out.print(t.left.val+" ");
+        while (!q.isEmpty()) {
+            t = q.poll();
+            if (t.left != null) {
+                System.out.print(t.left.val + " ");
                 q.offer(t.left);
             }
-            if(t.right!=null){
-                System.out.print(t.right.val+" ");
+            if (t.right != null) {
+                System.out.print(t.right.val + " ");
                 q.offer(t.right);
             }
         }
-
-
     }
+//Searching
+        //Iterative Searching
+        boolean search(int key){
+            Node troot=root;
+            while(troot!=null){
+                if(key==troot.val)
+                    return true;
+                else if(key<troot.val)
+                    troot=troot.left;
+                else if(key>troot.val)
+                    troot=troot.right;
+            }
+            return false;
+        }
+
+
     public static void main(String[] args) {
         BinarySearchTree t=new BinarySearchTree();
         t.insert(t.root, 50);
@@ -125,6 +142,7 @@ public class BinarySearchTree {
         b.preorder(t.root);
         System.out.println("");
         t.postorder(t.root);
+        System.out.println(t.search(0));
 
 
     }
