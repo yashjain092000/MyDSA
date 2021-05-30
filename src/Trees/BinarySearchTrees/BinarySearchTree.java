@@ -130,6 +130,46 @@ public class BinarySearchTree {
                 return rSearch(troot.right,key);
         }
 
+        //Deletion
+    boolean delete(int e){
+        Node p=root;
+        Node pp=null;
+        while(p!=null && p.val!=e){
+            pp=p;
+            if(e<p.val)
+                p=p.left;
+            else
+                p=p.right;
+        }
+        if(p==null)
+            return false;
+        if (p.left != null && p.right != null) {
+
+            Node s=p.left;
+            Node ps=p;
+            while(s.right!=null){
+                ps=s;
+                s=s.right;
+            }
+            p.val=s.val;
+            p=s;
+            pp=ps;
+        }
+        Node c=null;
+        if(p.left!=null)
+            c=p.left;
+        else
+            c=p.right;
+        if(p==root)
+            root=null;
+        else
+            if(p==pp.left)
+                pp.left=c;
+            else
+                pp.right=c;
+        return true;
+    }
+
 
     public static void main(String[] args) {
         BinarySearchTree t=new BinarySearchTree();
@@ -142,11 +182,11 @@ public class BinarySearchTree {
         t.inorder(t.root);
         System.out.println("recursive insert");
         BinarySearchTree b=new BinarySearchTree();
-        b.root=b.rInsert(b.root, 20);
-        b.rInsert(b.root, 40);
-        b.rInsert(b.root, 60);
-        b.rInsert(b.root, 80);
-        b.rInsert(b.root, 100);
+        b.root=b.rInsert(b.root, 3);
+        b.rInsert(b.root, 9);
+        b.rInsert(b.root, 20);
+        b.rInsert(b.root, 15);
+        b.rInsert(b.root, 7);
         b.inorder(b.root);
         System.out.println("");
         b.level();
@@ -156,6 +196,13 @@ public class BinarySearchTree {
         t.postorder(t.root);
         System.out.println(t.search(0));
         System.out.println(t.rSearch(t.root,10));
+        System.out.println("");
+        b.level();
+        System.out.println("");
+        b.delete(15);
+        System.out.println("");
+        b.level();
+        System.out.println("");
 
 
     }
