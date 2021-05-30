@@ -170,6 +170,16 @@ public class BinarySearchTree {
         return true;
     }
 
+    //Count no. of Nodes
+    int count(Node troot){
+        if(troot!=null){
+            int x=count(troot.left);
+            int y=count(troot.right);
+            return x+y+1;
+        }
+        return 0;
+    }
+
 
     public static void main(String[] args) {
         BinarySearchTree t=new BinarySearchTree();
@@ -203,6 +213,7 @@ public class BinarySearchTree {
         System.out.println("");
         b.level();
         System.out.println("");
+        System.out.println(b.count(b.root));
 
 
     }
