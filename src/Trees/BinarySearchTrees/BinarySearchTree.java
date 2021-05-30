@@ -179,6 +179,36 @@ public class BinarySearchTree {
         }
         return 0;
     }
+    //Height of tree
+    int height(Node troot){
+        if(troot!=null){
+            int x=height(troot.left);
+            int y=height(troot.right);
+           if(x>y)
+               return x+1;
+           else
+               return y+1;
+        }
+        return 0;
+    }
+
+    int myHeight(Node troot){
+        if(troot!=null) {
+            int x = 0, y = 0;
+            Node r = troot;
+            while (troot != null) {
+                x++;
+                troot = troot.left;
+            }
+            while (r != null) {
+                y++;
+                r = r.right;
+            }
+            return (int) Math.max(x, y) + 1;
+        }
+
+        return 0;
+    }
 
 
     public static void main(String[] args) {
@@ -189,14 +219,17 @@ public class BinarySearchTree {
         t.insert(t.root, 10);
         t.insert(t.root, 40);
         t.insert(t.root, 60);
+        t.insert(t.root, 90);
         t.inorder(t.root);
         System.out.println("recursive insert");
         BinarySearchTree b=new BinarySearchTree();
-        b.root=b.rInsert(b.root, 3);
-        b.rInsert(b.root, 9);
-        b.rInsert(b.root, 20);
-        b.rInsert(b.root, 15);
-        b.rInsert(b.root, 7);
+        b.root=b.rInsert(b.root, 10);
+        b.rInsert(b.root, 40);
+        b.rInsert(b.root, 30);
+        b.rInsert(b.root, 60);
+        b.rInsert(b.root, 90);
+        b.rInsert(b.root, 80);
+        b.rInsert(b.root, 50);
         b.inorder(b.root);
         System.out.println("");
         b.level();
@@ -214,6 +247,8 @@ public class BinarySearchTree {
         b.level();
         System.out.println("");
         System.out.println(b.count(b.root));
+        System.out.println(t.height(t.root)-1);
+        System.out.println(b.myHeight(b.root)-1);
 
 
     }
