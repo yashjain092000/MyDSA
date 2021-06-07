@@ -234,7 +234,7 @@ public class BinarySearchTree {
         System.out.println("");
         System.out.println(b.count(b.root));
         System.out.println(t.height(t.root) - 1);
-        System.out.println(b.myHeight(b.root) - 1);
+
 
 
     }
