@@ -6,7 +6,7 @@ public class Heap {
     private int mSize;
     private int cSize;
     private int[] data;
-    Heap(){
+    public Heap(){
         mSize=10;
         cSize=0;
         data=new int[mSize];
@@ -21,7 +21,7 @@ public class Heap {
     public boolean isFull(){
         return cSize==mSize;
     }
-    void insert(int e){
+    public void insert(int e){
         if(isFull()){
             System.out.println("Heap is Full");
             return;
