@@ -1,7 +1,7 @@
 package Sorting;
 
 import Heaps.Heap;
-
+//O(nlogn)
 public class heapSort {
     public void heapSortMethod(int[] a){
     Heap h=new Heap();
