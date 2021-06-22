@@ -60,4 +60,22 @@ public class Graph {
 
         }
     }
+
+    public static void main(String[] args) {
+        Graph g=new Graph(4);
+        System.out.println("matrix");
+        g.display();
+        System.out.println(g.vertexCount());
+        System.out.println(g.edgeCount());
+        g.insertEdge(0,1,1);
+        g.insertEdge(0,2,1);
+        g.insertEdge(1,0,1);
+        g.insertEdge(1,2,1);
+        g.insertEdge(2,0,1);
+        g.insertEdge(2,1,1);
+        g.insertEdge(2,3,1);
+        g.insertEdge(3,2,1);
+        g.display();
+
+    }
 }
